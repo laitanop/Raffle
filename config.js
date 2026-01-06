@@ -1,7 +1,7 @@
 // Contract Address - Replace with your deployed contract address
-export const CONTRACT_ADDRESS = "0x16A182E8D9dD486c9759E525263f225Ad3AA9F2e";
+const CONTRACT_ADDRESS = "0x16A182E8D9dD486c9759E525263f225Ad3AA9F2e";
 
-export const NETWORK_CONFIG = {
+const NETWORK_CONFIG = {
   chainId: "0xAA36A7",
   chainName: "Sepolia Testnet",
 
@@ -12,7 +12,7 @@ export const NETWORK_CONFIG = {
   },
 };
 
-export const CONTRACT_ABI = [
+const CONTRACT_ABI = [
   {
     type: "constructor",
     inputs: [
