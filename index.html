@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Raffle Contract Interface</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Raffle Contract</h1>
+        <button id="connectBtn" class="btn-primary">Connect Wallet</button>
+      </header>
+
+      <div id="walletInfo" class="wallet-info hidden">
+        <p>Connected: <span id="account"></span></p>
+      </div>
+
+      <main>
+        <section id="contractSection" class="hidden">
+          <h2>Contract Functions</h2>
+          <!-- Contract interaction UI will go here -->
+        </section>
+      </main>
+
+      <div id="status" class="status hidden"></div>
+    </div>
+
+    <!-- Web3.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+    <!-- Contract Configuration -->
+    <script src="config.js"></script>
+    <!-- Main Application Logic -->
+    <script src="app.js"></script>
+  </body>
+</html>
