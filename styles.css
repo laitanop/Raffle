@@ -46,6 +46,31 @@ header h2 {
   font-size: 1rem;
 }
 
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.disconnect-link {
+  color: #ea2e00;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.disconnect-link:hover {
+  text-decoration: underline;
+  opacity: 0.8;
+}
+
+.disconnect-link.hidden {
+  display: none;
+}
+
 /* Buttons */
 
 .btn-primary {
