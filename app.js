@@ -1,7 +1,7 @@
 let web3;
 
-const notConnected = document.getElementById("not-connected");
-const connectBtn = document.getElementById("connectBtn");
+let notConnected = document.getElementById("not-connected");
+let connectBtn = document.getElementById("connectBtn");
 
 async function initWeb3() {
   if (typeof window.ethereum !== "undefined") {
@@ -14,5 +14,25 @@ async function initWeb3() {
     notConnected.style.display = "block";
   }
 }
+
+async function connectWallet() {
+  try {
+    let accounts = await window.ethereum.request({
+      method: "eth_requestAccounts",
+    });
+    accounts = accounts[0];
+    const formattedAddress =
+      accounts.substring(0, 4) + ".." + accounts.substring(accounts.length - 3);
+    connectBtn.textContent = "connected to: " + formattedAddress;
+  } catch (error) {
+    console.error("Error connecting wallet: ", error);
+  }
+}
+
+function onClickConnectWallet() {
+  connectWallet();
+}
+
+connectBtn.addEventListener("click", onClickConnectWallet);
 
 initWeb3();
