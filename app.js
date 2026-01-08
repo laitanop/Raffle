@@ -83,8 +83,13 @@ async function getAllPlayers() {
     playersDiv.innerHTML = "";
 
     if (players.length === 0) {
-      playersDiv.innerHTML =
-        '<p class="empty-state">No players yet. Be the first to enter!</p>';
+      playersDiv.innerHTML = `
+        <div class="empty-state">
+          <span class="empty-icon">🎲</span>
+          <p class="empty-text">No players yet</p>
+          <p class="empty-subtext">Be the first to enter the raffle!</p>
+        </div>
+      `;
     } else {
       // Display each player in a styled card
       players.forEach((player, index) => {

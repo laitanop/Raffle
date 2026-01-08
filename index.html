@@ -34,11 +34,21 @@
         <section id="contractSection">
           <div class="players-card">
             <div class="players-header">
-              <h2>Players</h2>
-              <span class="players-count" id="playersCount">0</span>
+              <div class="players-title-group">
+                <span class="players-icon">👥</span>
+                <h2>Active Players</h2>
+              </div>
+              <div class="players-count-badge">
+                <span class="count-label">Total</span>
+                <span class="players-count" id="playersCount">0</span>
+              </div>
             </div>
             <div id="players" class="players-list">
-              <p class="empty-state">No players yet. Be the first to enter!</p>
+              <div class="empty-state">
+                <span class="empty-icon">🎲</span>
+                <p class="empty-text">No players yet</p>
+                <p class="empty-subtext">Be the first to enter the raffle!</p>
+              </div>
             </div>
           </div>
           <!-- Contract interaction UI will go here -->
