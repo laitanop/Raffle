@@ -32,7 +32,12 @@ async function connectWallet() {
 
     accounts = accounts[0];
     const formattedAddress = formatAddress(accounts);
-    connectBtn.textContent = "connected to: " + formattedAddress;
+    const btnText = connectBtn.querySelector(".btn-text");
+    if (btnText) {
+      btnText.textContent = "Connected: " + formattedAddress;
+    } else {
+      connectBtn.textContent = "Connected: " + formattedAddress;
+    }
     disconnectBtn.style.display = "block";
   } catch (error) {
     console.error("Error connecting wallet: ", error);
@@ -48,7 +53,12 @@ connectBtn.addEventListener("click", onClickConnectWallet);
 function disconnectWallet() {
   accounts = null;
   web3 = null;
-  connectBtn.textContent = "Connect Wallet";
+  const btnText = connectBtn.querySelector(".btn-text");
+  if (btnText) {
+    btnText.textContent = "Connect Wallet";
+  } else {
+    connectBtn.textContent = "Connect Wallet";
+  }
   connectBtn.style.display = "block";
 
   disconnectBtn.style.display = "none";

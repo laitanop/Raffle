@@ -9,14 +9,24 @@
   <body>
     <div class="container">
       <header>
-        <h1>Raffle Contract</h1>
+        <div class="header-left">
+          <div class="raffle-icon">🎰</div>
+          <div class="header-title-group">
+            <h1>Raffle Game</h1>
+            <p class="header-subtitle">Win Big • Play Fair • Decentralized</p>
+          </div>
+        </div>
         <div class="header-right">
-          <button id="connectBtn" class="btn-primary">Connect Wallet</button>
-
+          <button id="connectBtn" class="btn-primary">
+            <span class="btn-icon">🦊</span>
+            <span class="btn-text">Connect Wallet</span>
+          </button>
           <a id="disconnectBtn" href="#" class="disconnect-link"
             >Disconnect Wallet</a
           >
-          <h2 id="not-connected">Please install MetaMask!</h2>
+          <h2 id="not-connected" class="error-message">
+            ⚠️ Please install MetaMask!
+          </h2>
         </div>
       </header>
 
