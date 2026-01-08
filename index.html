@@ -21,8 +21,16 @@
       </header>
 
       <main>
-        <section id="contractSection" class="hidden">
-          <h2>Contract Functions</h2>
+        <section id="contractSection">
+          <div class="players-card">
+            <div class="players-header">
+              <h2>Players</h2>
+              <span class="players-count" id="playersCount">0</span>
+            </div>
+            <div id="players" class="players-list">
+              <p class="empty-state">No players yet. Be the first to enter!</p>
+            </div>
+          </div>
           <!-- Contract interaction UI will go here -->
         </section>
       </main>
@@ -32,6 +40,8 @@
 
     <!-- Web3.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/web3@1.10.0/dist/web3.min.js"></script>
+    <!-- Helper Utilities -->
+    <script src="helpers/utils.js"></script>
     <!-- Contract Configuration -->
     <script src="config.js"></script>
     <!-- Main Application Logic -->
