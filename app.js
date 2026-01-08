@@ -19,9 +19,14 @@ async function initWeb3() {
 
 async function connectWallet() {
   try {
-    accounts = await window.ethereum.request({
-      method: "eth_requestAccounts",
+    await window.ethereum.request({
+      method: "wallet_requestPermissions",
+      params: [{ eth_accounts: {} }],
     });
+    accounts = await window.ethereum.request({
+      method: "eth_accounts",
+    });
+
     accounts = accounts[0];
     const formattedAddress =
       accounts.substring(0, 4) + ".." + accounts.substring(accounts.length - 3);
