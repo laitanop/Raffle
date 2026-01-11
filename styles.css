@@ -212,6 +212,110 @@ header h2 {
   display: none;
 }
 
+/* Raffle State Section */
+.raffle-state-card {
+  background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  margin-bottom: 24px;
+  border: 2px solid #f0e7d6;
+  position: relative;
+  overflow: hidden;
+}
+
+.raffle-state-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #ea2e00, #9dbdb8, #ea2e00);
+}
+
+.raffle-state-content {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.raffle-state-icon {
+  font-size: 3rem;
+  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+  transition: transform 0.3s ease;
+  min-width: 60px;
+  text-align: center;
+}
+
+.raffle-state-icon.state-open {
+  animation: pulse-icon 2s infinite;
+}
+
+.raffle-state-icon.state-calculating {
+  animation: spin 2s linear infinite;
+}
+
+.raffle-state-icon.state-closed {
+  filter: drop-shadow(2px 2px 6px rgba(234, 46, 0, 0.3));
+}
+
+@keyframes pulse-icon {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.raffle-state-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.raffle-state-label {
+  font-size: 0.85rem;
+  color: #9dbdb8;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.raffle-state-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ea2e00;
+  transition: all 0.3s ease;
+}
+
+.raffle-state-value.state-open {
+  color: #9dbdb8;
+  text-shadow: 1px 1px 2px rgba(157, 189, 184, 0.2);
+}
+
+.raffle-state-value.state-calculating {
+  color: #ea2e00;
+  animation: text-pulse 1.5s infinite;
+}
+
+.raffle-state-value.state-closed {
+  color: #ea2e00;
+  text-shadow: 1px 1px 2px rgba(234, 46, 0, 0.2);
+}
+
+.raffle-state-value.state-error {
+  color: #dc3545;
+}
+
+@keyframes text-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
 /* Players Section */
 .players-card {
   background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);

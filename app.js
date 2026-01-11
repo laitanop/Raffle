@@ -5,6 +5,8 @@ let connectBtn = document.getElementById("connectBtn");
 let disconnectBtn = document.getElementById("disconnectBtn");
 let playersDiv = document.getElementById("players");
 let playersCount = document.getElementById("playersCount");
+let raffleStateValue = document.getElementById("raffleStateValue");
+let raffleStateIcon = document.getElementById("raffleStateIcon");
 
 let accounts = null;
 async function initWeb3() {
@@ -106,7 +108,54 @@ async function getAllPlayers() {
     console.error("Error getting all players: ", error);
   }
 }
+async function getRaffleState() {
+  try {
+    const contract = await getContract();
+    const raffleState = await contract.methods.getRaffleState().call();
+
+    // Convert to number for comparison (handles both string and number returns)
+    const stateNum = parseInt(raffleState);
+
+    let stateText, stateIcon, stateClass;
+
+    if (stateNum === 0) {
+      // State 0: Raffle In Progress
+      stateText = "Raffle In Progress";
+      stateIcon = "🎟️";
+      stateClass = "state-open";
+    } else if (stateNum === 1) {
+      // State 1: Raffle Not Started
+      stateText = "Raffle Not Started";
+      stateIcon = "⏸️";
+      stateClass = "state-closed";
+    } else {
+      // State 2+: Calculating Winner
+      stateText = "Calculating Winner";
+      stateIcon = "⏳";
+      stateClass = "state-calculating";
+    }
+
+    raffleStateValue.textContent = stateText;
+    raffleStateValue.className = `raffle-state-value ${stateClass}`;
+    raffleStateIcon.textContent = stateIcon;
+    raffleStateIcon.className = `raffle-state-icon ${stateClass}`;
+
+    console.log(
+      "Raffle State:",
+      raffleState,
+      "(" + stateNum + ") -",
+      stateText
+    );
+  } catch (error) {
+    console.error("Error getting raffle state: ", error);
+    raffleStateValue.textContent = "Error Loading";
+    raffleStateValue.className = "raffle-state-value state-error";
+    raffleStateIcon.textContent = "⚠️";
+    raffleStateIcon.className = "raffle-state-icon state-error";
+  }
+}
 
 initWeb3();
 getContract();
 getAllPlayers();
+getRaffleState();
