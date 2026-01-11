@@ -7,6 +7,7 @@ let playersDiv = document.getElementById("players");
 let playersCount = document.getElementById("playersCount");
 let raffleStateValue = document.getElementById("raffleStateValue");
 let raffleStateIcon = document.getElementById("raffleStateIcon");
+let raffleEnterBtn = document.getElementById("raffle-enter-btn");
 
 let accounts = null;
 async function initWeb3() {
@@ -15,6 +16,7 @@ async function initWeb3() {
     connectBtn.style.display = "block";
     disconnectBtn.style.display = "none";
     notConnected.style.display = "none";
+    raffleEnterBtn.style.display = "none";
     return true;
   } else {
     connectBtn.style.display = "none";
@@ -41,6 +43,7 @@ async function connectWallet() {
       connectBtn.textContent = "Connected: " + formattedAddress;
     }
     disconnectBtn.style.display = "block";
+    raffleEnterBtn.style.display = "block";
   } catch (error) {
     console.error("Error connecting wallet: ", error);
   }
@@ -64,13 +67,14 @@ function disconnectWallet() {
   connectBtn.style.display = "block";
 
   disconnectBtn.style.display = "none";
+  raffleEnterBtn.style.display = "none";
 }
 
 disconnectBtn.addEventListener("click", disconnectWallet);
 
 async function getContract() {
   const contract = new web3.eth.Contract(CONTRACT_ABI, CONTRACT_ADDRESS);
-  console.log(contract);
+
   return contract;
 }
 async function getAllPlayers() {
@@ -147,6 +151,27 @@ async function getRaffleState() {
     raffleStateIcon.className = "raffle-state-icon state-error";
   }
 }
+
+async function onClickEnterRaffle() {
+  try {
+    let contract = await getContract();
+
+    const entranceFee = await contract.methods.getEntranceFee().call();
+
+    // Convert entrance fee from Wei to Ether for display (optional)
+    const entranceFeeEth = web3.utils.fromWei(entranceFee, "ether");
+    console.log("Entrance Fee:", entranceFeeEth, "ETH");
+    const tx = await contract.methods.enterRaffle().send({
+      from: accounts,
+      value: entranceFee, // Send the entrance fee in Wei
+      gas: 300000, // Adjust gas limit as needed
+    });
+    await getAllPlayers();
+    console.log("Transaction successful:", tx);
+  } catch (error) {}
+}
+
+raffleEnterBtn.addEventListener("click", onClickEnterRaffle);
 
 initWeb3();
 getContract();
