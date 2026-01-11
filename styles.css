@@ -260,6 +260,11 @@ header h2 {
   filter: drop-shadow(2px 2px 6px rgba(234, 46, 0, 0.3));
 }
 
+.raffle-state-icon.state-loading {
+  animation: spin 2s linear infinite;
+  opacity: 0.7;
+}
+
 @keyframes pulse-icon {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.1); }

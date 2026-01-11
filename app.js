@@ -139,13 +139,6 @@ async function getRaffleState() {
     raffleStateValue.className = `raffle-state-value ${stateClass}`;
     raffleStateIcon.textContent = stateIcon;
     raffleStateIcon.className = `raffle-state-icon ${stateClass}`;
-
-    console.log(
-      "Raffle State:",
-      raffleState,
-      "(" + stateNum + ") -",
-      stateText
-    );
   } catch (error) {
     console.error("Error getting raffle state: ", error);
     raffleStateValue.textContent = "Error Loading";
