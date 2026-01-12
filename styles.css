@@ -103,6 +103,34 @@ header h1 {
   margin: 0;
   letter-spacing: 1px;
   text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.etherscan-link {
+  color: #ea2e00;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(234, 46, 0, 0.1);
+  border: 1px solid rgba(234, 46, 0, 0.2);
+  text-transform: none;
+}
+
+.etherscan-link:hover {
+  color: #d12800;
+  background: rgba(234, 46, 0, 0.2);
+  border-color: rgba(234, 46, 0, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(234, 46, 0, 0.2);
 }
 
 header h2 {

@@ -8,7 +8,7 @@ let playersCount = document.getElementById("playersCount");
 let raffleStateValue = document.getElementById("raffleStateValue");
 let raffleStateIcon = document.getElementById("raffleStateIcon");
 let raffleEnterBtn = document.getElementById("raffle-enter-btn");
-
+let winnerTitle = document.getElementById("winner-title");
 let accounts = null;
 async function initWeb3() {
   if (typeof window.ethereum !== "undefined") {
@@ -167,13 +167,20 @@ async function onClickEnterRaffle() {
       gas: 300000, // Adjust gas limit as needed
     });
     await getAllPlayers();
-    console.log("Transaction successful:", tx);
   } catch (error) {}
 }
 
 raffleEnterBtn.addEventListener("click", onClickEnterRaffle);
 
+async function getRecentWinner() {
+  let contract = await getContract();
+  let recentWinner = await contract.methods.getRecentWinner().call();
+
+  winnerTitle.textContent = "Recent Winner: " + recentWinner;
+}
+
 initWeb3();
 getContract();
 getAllPlayers();
 getRaffleState();
+getRecentWinner();
