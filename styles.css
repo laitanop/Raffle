@@ -103,9 +103,13 @@ header h1 {
   margin: 0;
   letter-spacing: 1px;
   text-transform: uppercase;
+}
+
+.header-links {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  margin-top: 8px;
   flex-wrap: wrap;
 }
 
@@ -131,6 +135,21 @@ header h1 {
   border-color: rgba(234, 46, 0, 0.4);
   transform: translateY(-1px);
   box-shadow: 0 2px 4px rgba(234, 46, 0, 0.2);
+}
+
+.testnet-badge {
+  color: #9dbdb8;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(157, 189, 184, 0.15);
+  border: 1px solid rgba(157, 189, 184, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  text-transform: none;
+  letter-spacing: 0.5px;
 }
 
 header h2 {
